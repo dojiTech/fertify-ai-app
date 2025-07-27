@@ -30,6 +30,7 @@ export default function ChatScreen() {
   const { user, isAuthenticated } = useAuth();
   
   // Check if user is authenticated
+  // this is for  authentication and authorization
   useEffect(() => {
     if (!isAuthenticated) {
       // Redirect to login if not authenticated
