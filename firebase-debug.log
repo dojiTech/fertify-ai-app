@@ -1,0 +1,21 @@
+[debug] [2025-07-28T04:13:07.078Z] ----------------------------------------------------------------------
+[debug] [2025-07-28T04:13:07.089Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\USER\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2025-07-28T04:13:07.091Z] CLI Version:   14.11.1
+[debug] [2025-07-28T04:13:07.092Z] Platform:      win32
+[debug] [2025-07-28T04:13:07.093Z] Node Version:  v20.17.0
+[debug] [2025-07-28T04:13:07.093Z] Time:          Mon Jul 28 2025 04:13:07 GMT+0000 (Coordinated Universal Time)
+[debug] [2025-07-28T04:13:07.094Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-07-28T04:13:07.119Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-07-28T04:13:07.120Z] > authorizing via signed-in user (richardadjiwayofficial@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\USER\Documents\WEBINARS\FERTIFY AI\fertify-ai-app
+
