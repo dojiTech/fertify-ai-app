@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TextInput, TouchableOpacity, Image, Alert, ActivityIndicator, ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+} from 'react-native';
 import { router } from 'expo-router';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-import { registerUser } from '@/src/api/auth';
+import { registerUser } from '../../src/api/auth';
+import { Colors } from '../../constants/Colors';
+import { useColorScheme } from '../../hooks/useColorScheme';
 
 export default function RegisterScreen() {
   const [name, setName] = useState('');
@@ -13,10 +21,9 @@ export default function RegisterScreen() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const colorScheme = useColorScheme() ?? 'light';
+  const colorScheme = useColorScheme();
 
   const handleRegister = async () => {
-    // Basic validation
     if (!name || !email || !password || !confirmPassword) {
       Alert.alert('Error', 'Please fill in all fields');
       return;
@@ -35,145 +42,216 @@ export default function RegisterScreen() {
     setLoading(true);
     try {
       await registerUser(email, password, name);
-      Alert.alert(
-        'Registration Successful', 
-        'Your account has been created successfully!',
-        [{ text: 'OK', onPress: () => router.replace('/auth/login') }]
-      );
+      Alert.alert('Success', 'Account created successfully!', [
+        {
+          text: 'OK',
+          onPress: () => router.replace('/(tabs)'),
+        },
+      ]);
     } catch (error: any) {
-      Alert.alert('Registration Failed', error.message || 'An error occurred during registration');
+      Alert.alert('Registration Failed', error.message);
     } finally {
       setLoading(false);
     }
   };
 
-  const navigateToLogin = () => {
+  const goToLogin = () => {
     router.push('/auth/login');
   };
 
   return (
-    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-      <ThemedView style={styles.container}>
-        <View style={styles.logoContainer}>
-          <Image source={require('../../assets/images/fai.png')} style={styles.logo} resizeMode="contain" />
-        </View>
-        <ThemedText type="title" style={styles.title}>FERTIFY AI</ThemedText>
-        <ThemedText style={styles.subtitle}>Create a new account</ThemedText>
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    >
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <View style={styles.content}>
+          <Text style={[styles.title, { color: Colors[colorScheme ?? 'light'].text }]}>
+            Create Account
+          </Text>
+          <Text style={[styles.subtitle, { color: Colors[colorScheme ?? 'light'].text }]}>
+            Join Fertify AI to track your fertility journey
+          </Text>
 
-        <View style={styles.formContainer}>
-          <TextInput
-            style={[styles.input, { borderColor: Colors[colorScheme].icon }]}
-            placeholder="Full Name"
-            placeholderTextColor={Colors[colorScheme].icon}
-            value={name}
-            onChangeText={setName}
-          />
-          <TextInput
-            style={[styles.input, { borderColor: Colors[colorScheme].icon }]}
-            placeholder="Email"
-            placeholderTextColor={Colors[colorScheme].icon}
-            value={email}
-            onChangeText={setEmail}
-            keyboardType="email-address"
-            autoCapitalize="none"
-          />
-          <TextInput
-            style={[styles.input, { borderColor: Colors[colorScheme].icon }]}
-            placeholder="Password"
-            placeholderTextColor={Colors[colorScheme].icon}
-            value={password}
-            onChangeText={setPassword}
-            secureTextEntry
-          />
-          <TextInput
-            style={[styles.input, { borderColor: Colors[colorScheme].icon }]}
-            placeholder="Confirm Password"
-            placeholderTextColor={Colors[colorScheme].icon}
-            value={confirmPassword}
-            onChangeText={setConfirmPassword}
-            secureTextEntry
-          />
+          <View style={styles.form}>
+            <View style={styles.inputContainer}>
+              <Text style={[styles.label, { color: Colors[colorScheme ?? 'light'].text }]}>
+                Full Name
+              </Text>
+              <TextInput
+                style={[
+                  styles.input,
+                  {
+                    backgroundColor: Colors[colorScheme ?? 'light'].background,
+                    color: Colors[colorScheme ?? 'light'].text,
+                    borderColor: Colors[colorScheme ?? 'light'].border,
+                  },
+                ]}
+                placeholder="Enter your full name"
+                placeholderTextColor={Colors[colorScheme ?? 'light'].tabIconDefault}
+                value={name}
+                onChangeText={setName}
+                autoCapitalize="words"
+                autoCorrect={false}
+              />
+            </View>
 
-          <TouchableOpacity 
-            style={[styles.button, { backgroundColor: Colors[colorScheme].tint }]} 
-            onPress={handleRegister}
-            disabled={loading}
-          >
-            {loading ? (
-              <ActivityIndicator color="#fff" />
-            ) : (
-              <ThemedText style={styles.buttonText}>Register</ThemedText>
-            )}
-          </TouchableOpacity>
+            <View style={styles.inputContainer}>
+              <Text style={[styles.label, { color: Colors[colorScheme ?? 'light'].text }]}>
+                Email
+              </Text>
+              <TextInput
+                style={[
+                  styles.input,
+                  {
+                    backgroundColor: Colors[colorScheme ?? 'light'].background,
+                    color: Colors[colorScheme ?? 'light'].text,
+                    borderColor: Colors[colorScheme ?? 'light'].border,
+                  },
+                ]}
+                placeholder="Enter your email"
+                placeholderTextColor={Colors[colorScheme ?? 'light'].tabIconDefault}
+                value={email}
+                onChangeText={setEmail}
+                keyboardType="email-address"
+                autoCapitalize="none"
+                autoCorrect={false}
+              />
+            </View>
 
-          <View style={styles.loginContainer}>
-            <ThemedText>Already have an account? </ThemedText>
-            <TouchableOpacity onPress={navigateToLogin}>
-              <ThemedText style={styles.loginText}>Login</ThemedText>
+            <View style={styles.inputContainer}>
+              <Text style={[styles.label, { color: Colors[colorScheme ?? 'light'].text }]}>
+                Password
+              </Text>
+              <TextInput
+                style={[
+                  styles.input,
+                  {
+                    backgroundColor: Colors[colorScheme ?? 'light'].background,
+                    color: Colors[colorScheme ?? 'light'].text,
+                    borderColor: Colors[colorScheme ?? 'light'].border,
+                  },
+                ]}
+                placeholder="Create a password"
+                placeholderTextColor={Colors[colorScheme ?? 'light'].tabIconDefault}
+                value={password}
+                onChangeText={setPassword}
+                secureTextEntry
+                autoCapitalize="none"
+              />
+            </View>
+
+            <View style={styles.inputContainer}>
+              <Text style={[styles.label, { color: Colors[colorScheme ?? 'light'].text }]}>
+                Confirm Password
+              </Text>
+              <TextInput
+                style={[
+                  styles.input,
+                  {
+                    backgroundColor: Colors[colorScheme ?? 'light'].background,
+                    color: Colors[colorScheme ?? 'light'].text,
+                    borderColor: Colors[colorScheme ?? 'light'].border,
+                  },
+                ]}
+                placeholder="Confirm your password"
+                placeholderTextColor={Colors[colorScheme ?? 'light'].tabIconDefault}
+                value={confirmPassword}
+                onChangeText={setConfirmPassword}
+                secureTextEntry
+                autoCapitalize="none"
+              />
+            </View>
+
+            <TouchableOpacity
+              style={[
+                styles.registerButton,
+                {
+                  backgroundColor: Colors[colorScheme ?? 'light'].tint,
+                  opacity: loading ? 0.7 : 1,
+                },
+              ]}
+              onPress={handleRegister}
+              disabled={loading}
+            >
+              <Text style={styles.registerButtonText}>
+                {loading ? 'Creating Account...' : 'Create Account'}
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.loginLink} onPress={goToLogin}>
+              <Text style={[styles.loginText, { color: Colors[colorScheme ?? 'light'].tint }]}>
+                Already have an account? Sign in
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
-      </ThemedView>
-    </ScrollView>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+  },
+  scrollContainer: {
+    flexGrow: 1,
     justifyContent: 'center',
   },
-  logoContainer: {
+  content: {
+    padding: 20,
     alignItems: 'center',
-    marginBottom: 20,
-  },
-  logo: {
-    width: 120,
-    height: 120,
-    borderRadius: 20,
   },
   title: {
     fontSize: 32,
     fontWeight: 'bold',
+    marginBottom: 10,
     textAlign: 'center',
-    marginBottom: 8,
   },
   subtitle: {
-    fontSize: 18,
+    fontSize: 16,
+    marginBottom: 40,
     textAlign: 'center',
-    marginBottom: 30,
+    opacity: 0.7,
   },
-  formContainer: {
+  form: {
     width: '100%',
+    maxWidth: 400,
+  },
+  inputContainer: {
+    marginBottom: 20,
+  },
+  label: {
+    fontSize: 16,
+    fontWeight: '600',
+    marginBottom: 8,
   },
   input: {
     height: 50,
     borderWidth: 1,
     borderRadius: 8,
-    marginBottom: 16,
     paddingHorizontal: 16,
     fontSize: 16,
   },
-  button: {
+  registerButton: {
     height: 50,
     borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 16,
+    marginTop: 20,
   },
-  buttonText: {
-    color: '#fff',
+  registerButtonText: {
+    color: 'white',
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: '600',
   },
-  loginContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: 16,
+  loginLink: {
+    marginTop: 20,
+    alignItems: 'center',
   },
   loginText: {
-    color: '#2e7d32',
-    fontWeight: 'bold',
+    fontSize: 14,
+    textDecorationLine: 'underline',
   },
 });

@@ -9,6 +9,7 @@ import { useColorScheme } from '@/hooks/useColorScheme';
 //import { Timestamp } from 'firebase/firestore';
 import { useAuth } from '@/src/contexts/AuthContext';
 import { router } from 'expo-router';
+import { signOut } from '@/src/api/auth';
 
 // Type for the result object
 interface NPKResult {
@@ -142,8 +143,14 @@ export default function CalculatorScreen() {
   };
   
   // Handle sign out
-  const handleSignOut = () => {
-    router.replace('/auth/login');
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+      router.replace('/auth/login');
+    } catch (error) {
+      console.error('Error signing out:', error);
+      Alert.alert('Error', 'Failed to sign out');
+    }
   };
 
   // Choose a comfortable background and text color for the result card

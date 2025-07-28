@@ -9,6 +9,7 @@ import { useColorScheme } from '@/hooks/useColorScheme';
 //import { Timestamp } from 'firebase/firestore';
 import { useAuth } from '@/src/contexts/AuthContext';
 import { router } from 'expo-router';
+import { signOut } from '@/src/api/auth';
 
 const USER = 'user';
 const AI = 'ai';
@@ -124,8 +125,14 @@ export default function ChatScreen() {
   };
 
   // Function to handle sign out
-  const handleSignOut = () => {
-    router.replace('/auth/login');
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+      router.replace('/auth/login');
+    } catch (error) {
+      console.error('Error signing out:', error);
+      Alert.alert('Error', 'Failed to sign out');
+    }
   };
 
   const renderItem = ({ item }: { item: Message }) => (

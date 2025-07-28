@@ -1,21 +1,29 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TextInput, TouchableOpacity, Image, Alert, ActivityIndicator } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+} from 'react-native';
 import { router } from 'expo-router';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-import { signIn } from '@/src/api/auth';
+import { signIn } from '../../src/api/auth';
+import { Colors } from '../../constants/Colors';
+import { useColorScheme } from '../../hooks/useColorScheme';
 
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const colorScheme = useColorScheme() ?? 'light';
+  const colorScheme = useColorScheme();
 
   const handleLogin = async () => {
     if (!email || !password) {
-      Alert.alert('Error', 'Please enter both email and password');
+      Alert.alert('Error', 'Please fill in all fields');
       return;
     }
 
@@ -24,135 +32,165 @@ export default function LoginScreen() {
       await signIn(email, password);
       router.replace('/(tabs)');
     } catch (error: any) {
-      Alert.alert('Login Failed', error.message || 'Please check your credentials and try again');
+      Alert.alert('Login Failed', error.message);
     } finally {
       setLoading(false);
     }
   };
 
-  const navigateToRegister = () => {
+  const goToRegister = () => {
     router.push('/auth/register');
   };
 
-  const navigateToForgotPassword = () => {
-    router.push('/auth/forgot-password');
-  };
-
   return (
-    <ThemedView style={styles.container}>
-      <View style={styles.logoContainer}>
-        <Image source={require('../../assets/images/fai.png')} style={styles.logo} resizeMode="contain" />
-      </View>
-      <ThemedText type="title" style={styles.title}>FERTIFY AI</ThemedText>
-      <ThemedText style={styles.subtitle}>Login to your account</ThemedText>
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    >
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <View style={styles.content}>
+          <Text style={[styles.title, { color: Colors[colorScheme ?? 'light'].text }]}>
+            Welcome Back
+          </Text>
+          <Text style={[styles.subtitle, { color: Colors[colorScheme ?? 'light'].text }]}>
+            Sign in to your Fertify AI account
+          </Text>
 
-      <View style={styles.formContainer}>
-        <TextInput
-          style={[styles.input, { borderColor: Colors[colorScheme].icon }]}
-          placeholder="Email"
-          placeholderTextColor={Colors[colorScheme].icon}
-          value={email}
-          onChangeText={setEmail}
-          keyboardType="email-address"
-          autoCapitalize="none"
-        />
-        <TextInput
-          style={[styles.input, { borderColor: Colors[colorScheme].icon }]}
-          placeholder="Password"
-          placeholderTextColor={Colors[colorScheme].icon}
-          value={password}
-          onChangeText={setPassword}
-          secureTextEntry
-        />
+          <View style={styles.form}>
+            <View style={styles.inputContainer}>
+              <Text style={[styles.label, { color: Colors[colorScheme ?? 'light'].text }]}>
+                Email
+              </Text>
+              <TextInput
+                style={[
+                  styles.input,
+                  {
+                    backgroundColor: Colors[colorScheme ?? 'light'].background,
+                    color: Colors[colorScheme ?? 'light'].text,
+                    borderColor: Colors[colorScheme ?? 'light'].border,
+                  },
+                ]}
+                placeholder="Enter your email"
+                placeholderTextColor={Colors[colorScheme ?? 'light'].tabIconDefault}
+                value={email}
+                onChangeText={setEmail}
+                keyboardType="email-address"
+                autoCapitalize="none"
+                autoCorrect={false}
+              />
+            </View>
 
-        <TouchableOpacity onPress={navigateToForgotPassword}>
-          <ThemedText style={styles.forgotPassword}>Forgot Password?</ThemedText>
-        </TouchableOpacity>
+            <View style={styles.inputContainer}>
+              <Text style={[styles.label, { color: Colors[colorScheme ?? 'light'].text }]}>
+                Password
+              </Text>
+              <TextInput
+                style={[
+                  styles.input,
+                  {
+                    backgroundColor: Colors[colorScheme ?? 'light'].background,
+                    color: Colors[colorScheme ?? 'light'].text,
+                    borderColor: Colors[colorScheme ?? 'light'].border,
+                  },
+                ]}
+                placeholder="Enter your password"
+                placeholderTextColor={Colors[colorScheme ?? 'light'].tabIconDefault}
+                value={password}
+                onChangeText={setPassword}
+                secureTextEntry
+                autoCapitalize="none"
+              />
+            </View>
 
-        <TouchableOpacity 
-          style={[styles.button, { backgroundColor: Colors[colorScheme].tint }]} 
-          onPress={handleLogin}
-          disabled={loading}
-        >
-          {loading ? (
-            <ActivityIndicator color="#fff" />
-          ) : (
-            <ThemedText style={styles.buttonText}>Login</ThemedText>
-          )}
-        </TouchableOpacity>
+            <TouchableOpacity
+              style={[
+                styles.loginButton,
+                {
+                  backgroundColor: Colors[colorScheme ?? 'light'].tint,
+                  opacity: loading ? 0.7 : 1,
+                },
+              ]}
+              onPress={handleLogin}
+              disabled={loading}
+            >
+              <Text style={styles.loginButtonText}>
+                {loading ? 'Signing In...' : 'Sign In'}
+              </Text>
+            </TouchableOpacity>
 
-        <View style={styles.registerContainer}>
-          <ThemedText>Don't have an account? </ThemedText>
-          <TouchableOpacity onPress={navigateToRegister}>
-            <ThemedText style={styles.registerText}>Register</ThemedText>
-          </TouchableOpacity>
+            <TouchableOpacity style={styles.registerLink} onPress={goToRegister}>
+              <Text style={[styles.registerText, { color: Colors[colorScheme ?? 'light'].tint }]}>
+                Don't have an account? Sign up
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
-    </ThemedView>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+  },
+  scrollContainer: {
+    flexGrow: 1,
     justifyContent: 'center',
   },
-  logoContainer: {
+  content: {
+    padding: 20,
     alignItems: 'center',
-    marginBottom: 20,
-  },
-  logo: {
-    width: 120,
-    height: 120,
-    borderRadius: 20,
   },
   title: {
     fontSize: 32,
     fontWeight: 'bold',
+    marginBottom: 10,
     textAlign: 'center',
-    marginBottom: 8,
   },
   subtitle: {
-    fontSize: 18,
+    fontSize: 16,
+    marginBottom: 40,
     textAlign: 'center',
-    marginBottom: 30,
+    opacity: 0.7,
   },
-  formContainer: {
+  form: {
     width: '100%',
+    maxWidth: 400,
+  },
+  inputContainer: {
+    marginBottom: 20,
+  },
+  label: {
+    fontSize: 16,
+    fontWeight: '600',
+    marginBottom: 8,
   },
   input: {
     height: 50,
     borderWidth: 1,
     borderRadius: 8,
-    marginBottom: 16,
     paddingHorizontal: 16,
     fontSize: 16,
   },
-  forgotPassword: {
-    textAlign: 'right',
-    marginBottom: 24,
-    color: '#2e7d32',
-  },
-  button: {
+  loginButton: {
     height: 50,
     borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 16,
+    marginTop: 20,
   },
-  buttonText: {
-    color: '#fff',
+  loginButtonText: {
+    color: 'white',
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: '600',
   },
-  registerContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: 16,
+  registerLink: {
+    marginTop: 20,
+    alignItems: 'center',
   },
   registerText: {
-    color: '#2e7d32',
-    fontWeight: 'bold',
+    fontSize: 14,
+    textDecorationLine: 'underline',
   },
 });

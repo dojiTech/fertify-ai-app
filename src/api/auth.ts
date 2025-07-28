@@ -1,4 +1,4 @@
-/*import { 
+import { 
   createUserWithEmailAndPassword, 
   signInWithEmailAndPassword, 
   signOut as firebaseSignOut,
@@ -64,4 +64,3 @@ export async function resetPassword(email: string): Promise<void> {
     throw error;
   }
 }
-  */
