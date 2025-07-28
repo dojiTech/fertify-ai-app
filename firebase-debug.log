@@ -19,3 +19,203 @@ You're about to initialize a Firebase project in this directory:
 
   C:\Users\USER\Documents\WEBINARS\FERTIFY AI\fertify-ai-app
 
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2025-07-28T04:13:24.843Z] Checked if tokens are valid: true, expires at: 1753678868342
+[debug] [2025-07-28T04:13:24.844Z] Checked if tokens are valid: true, expires at: 1753678868342
+[debug] [2025-07-28T04:13:24.848Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2025-07-28T04:13:25.842Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2025-07-28T04:13:25.842Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] i  Using project fertify-ai-app-467302 (Fertify-ai-app) 
+[info] 
+=== Dataconnect Setup
+[debug] [2025-07-28T04:13:29.894Z] Checked if tokens are valid: true, expires at: 1753678868342
+[debug] [2025-07-28T04:13:29.894Z] Checked if tokens are valid: true, expires at: 1753678868342
+[debug] [2025-07-28T04:13:29.895Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/fertify-ai-app-467302/billingInfo [none]
+[debug] [2025-07-28T04:13:31.108Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/fertify-ai-app-467302/billingInfo 200
+[debug] [2025-07-28T04:13:31.108Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/fertify-ai-app-467302/billingInfo {"name":"projects/fertify-ai-app-467302/billingInfo","projectId":"fertify-ai-app-467302","billingAccountName":"","billingEnabled":false}
+[info] i  dataconnect: ensuring required API sqladmin.googleapis.com is enabled... 
+[debug] [2025-07-28T04:13:31.110Z] Checked if tokens are valid: true, expires at: 1753678868342
+[debug] [2025-07-28T04:13:31.110Z] Checked if tokens are valid: true, expires at: 1753678868342
+[debug] [2025-07-28T04:13:31.110Z] >>> [apiv2][query] GET https://firebasedataconnect.googleapis.com/v1/projects/fertify-ai-app-467302/locations/-/services [none]
+[debug] [2025-07-28T04:13:33.250Z] <<< [apiv2][status] GET https://firebasedataconnect.googleapis.com/v1/projects/fertify-ai-app-467302/locations/-/services 200
+[debug] [2025-07-28T04:13:33.251Z] <<< [apiv2][body] GET https://firebasedataconnect.googleapis.com/v1/projects/fertify-ai-app-467302/locations/-/services {}
+[info] +  Wrote dataconnect\dataconnect.yaml 
+[info] +  Wrote dataconnect\schema\schema.gql 
+[info] +  Wrote dataconnect\connector\connector.yaml 
+[info] +  Wrote dataconnect\connector\queries.gql 
+[info] +  Wrote dataconnect\connector\mutations.gql 
+[info] +  Detected WEB app in directory C:\Users\USER\Documents\WEBINARS\FERTIFY AI\fertify-ai-app 
+[info] i  Detected react app. Enabling react generated SDKs. 
+[info] i  Writing your new SDK configuration to C:\Users\USER\Documents\WEBINARS\FERTIFY AI\fertify-ai-app\dataconnect\connector/connector.yaml 
+[info] +  Wrote dataconnect\connector\connector.yaml 
+[info] i  dataconnect: downloading dataconnect-emulator-2.10.1.exe... {"metadata":{"emulator":{"name":"dataconnect"},"message":"downloading dataconnect-emulator-2.10.1.exe..."}}
+[debug] [2025-07-28T04:14:40.535Z] >>> [apiv2][query] GET https://storage.googleapis.com/firemat-preview-drop/emulator/dataconnect-emulator-windows-v2.10.1 
+[debug] [2025-07-28T04:14:41.465Z] <<< [apiv2][status] GET https://storage.googleapis.com/firemat-preview-drop/emulator/dataconnect-emulator-windows-v2.10.1 200
+[debug] [2025-07-28T04:14:41.465Z] <<< [apiv2][body] GET https://storage.googleapis.com/firemat-preview-drop/emulator/dataconnect-emulator-windows-v2.10.1 [stream]
+[debug] [2025-07-28T04:15:31.188Z] defaultcredentials: writing to file C:\Users\USER\AppData\Roaming\firebase\richardadjiwayofficial_gmail_com_application_default_credentials.json
+[info] I0728 04:15:32.282967   12384 codegen.go:82] [connector "default" javascriptSdk] Generating sources into "C:\\Users\\USER\\Documents\\WEBINARS\\FERTIFY AI\\fertify-ai-app\\dataconnect-generated\\js\\default-connector"
+I0728 04:15:32.366461   12384 generate.go:40] Generated all sources. Writing them to disk...
+I0728 04:15:32.389864   12384 collector.go:107] connector "default" javascriptSdk wrote into "C:\\Users\\USER\\Documents\\WEBINARS\\FERTIFY AI\\fertify-ai-app\\dataconnect-generated\\js\\default-connector"
+Generated sources: index.d.ts [248B] esm\index.esm.js [117B] package.json [860B] README.md [2896B] react\package.json [468B] react\esm\package.json [17B] react\esm\index.esm.js [0B] react\README.md [5474B] esm\package.json [17B] index.cjs.js [152B] react\index.d.ts [228B] react\index.cjs.js [0B] 
+I0728 04:15:32.507867   12384 installsdk.go:86] Running command: C:\Program Files\nodejs\npm.cmd install file:dataconnect-generated\js\default-connector
+
+[info] i  Generated SDK code for default 
+[info] i  Visit https://firebase.google.com/docs/data-connect/web-sdk#react for more information on how to set up React Generated SDKs for Firebase Data Connect 
+[info] +  If you'd like to add more generated SDKs to your app your later, run firebase init dataconnect:sdk again 
+[info] i  If you'd like to provision a CloudSQL Postgres instance on the Firebase Data Connect no-cost trial:
+1. Please upgrade to the pay-as-you-go (Blaze) billing plan. Visit the following page:
+     https://console.firebase.google.com/project/fertify-ai-app-467302/usage/details
+2. Run firebase init dataconnect again to configure the Cloud SQL instance.
+3. Run firebase deploy --only dataconnect to deploy your Data Connect service. 
+[info] 
+=== Firestore Setup
+[info] i  firestore: ensuring required API firestore.googleapis.com is enabled... 
+[debug] [2025-07-28T04:15:59.284Z] Checked if tokens are valid: true, expires at: 1753678868342
+[debug] [2025-07-28T04:15:59.284Z] Checked if tokens are valid: true, expires at: 1753678868342
+[debug] [2025-07-28T04:15:59.285Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/fertify-ai-app-467302/services/firestore.googleapis.com [none]
+[debug] [2025-07-28T04:15:59.285Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/fertify-ai-app-467302/services/firestore.googleapis.com x-goog-quota-user=projects/fertify-ai-app-467302
+[debug] [2025-07-28T04:16:00.537Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/fertify-ai-app-467302/services/firestore.googleapis.com 200
+[debug] [2025-07-28T04:16:00.538Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/fertify-ai-app-467302/services/firestore.googleapis.com [omitted]
+[warn] !  firestore: missing required API firestore.googleapis.com. Enabling now... 
+[debug] [2025-07-28T04:16:00.560Z] Checked if tokens are valid: true, expires at: 1753678868342
+[debug] [2025-07-28T04:16:00.561Z] Checked if tokens are valid: true, expires at: 1753678868342
+[debug] [2025-07-28T04:16:00.562Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/fertify-ai-app-467302/services/firestore.googleapis.com:enable [none]
+[debug] [2025-07-28T04:16:00.563Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/fertify-ai-app-467302/services/firestore.googleapis.com:enable x-goog-quota-user=projects/fertify-ai-app-467302
+[debug] [2025-07-28T04:16:01.812Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/fertify-ai-app-467302/services/firestore.googleapis.com:enable 200
+[debug] [2025-07-28T04:16:01.812Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/fertify-ai-app-467302/services/firestore.googleapis.com:enable [omitted]
+[debug] [2025-07-28T04:16:11.863Z] Checked if tokens are valid: true, expires at: 1753678868342
+[debug] [2025-07-28T04:16:11.863Z] Checked if tokens are valid: true, expires at: 1753678868342
+[debug] [2025-07-28T04:16:11.864Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/fertify-ai-app-467302/databases [none]
+[debug] [2025-07-28T04:16:13.697Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/fertify-ai-app-467302/databases 200
+[debug] [2025-07-28T04:16:13.697Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/fertify-ai-app-467302/databases {}
+[debug] [2025-07-28T04:16:13.697Z] Checked if tokens are valid: true, expires at: 1753678868342
+[debug] [2025-07-28T04:16:13.697Z] Checked if tokens are valid: true, expires at: 1753678868342
+[debug] [2025-07-28T04:16:13.698Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/fertify-ai-app-467302/locations [none]
+[debug] [2025-07-28T04:16:14.347Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/fertify-ai-app-467302/locations 200
+[debug] [2025-07-28T04:16:14.347Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/fertify-ai-app-467302/locations {"locations":[{"name":"projects/fertify-ai-app-467302/locations/eur3","labels":{"appengine.googleapis.com/geo":"europe-west","cloud.googleapis.com/location":"eur3","cloud.googleapis.com/geo":"eur3"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"eur3","displayName":"Europe"},{"name":"projects/fertify-ai-app-467302/locations/nam5","labels":{"appengine.googleapis.com/geo":"us-central","cloud.googleapis.com/location":"nam5","cloud.googleapis.com/geo":"nam5"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"nam5","displayName":"United States"},{"name":"projects/fertify-ai-app-467302/locations/nam7","labels":{"cloud.googleapis.com/location":"nam7","cloud.googleapis.com/geo":"nam7"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"nam7","displayName":"United States"},{"name":"projects/fertify-ai-app-467302/locations/africa-south1","labels":{"cloud.googleapis.com/location":"africa-south1","cloud.googleapis.com/region":"africa-south1"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"africa-south1","displayName":"Johannesburg"},{"name":"projects/fertify-ai-app-467302/locations/asia-east1","labels":{"appengine.googleapis.com/region":"asia-east1","cloud.googleapis.com/location":"asia-east1","cloud.googleapis.com/region":"asia-east1"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"asia-east1","displayName":"Taiwan"},{"name":"projects/fertify-ai-app-467302/locations/asia-east2","labels":{"appengine.googleapis.com/region":"asia-east2","cloud.googleapis.com/location":"asia-east2","cloud.googleapis.com/region":"asia-east2"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"asia-east2","displayName":"Hong Kong"},{"name":"projects/fertify-ai-app-467302/locations/asia-northeast1","labels":{"appengine.googleapis.com/region":"asia-northeast1","cloud.googleapis.com/location":"asia-northeast1","cloud.googleapis.com/region":"asia-northeast1"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"asia-northeast1","displayName":"Tokyo"},{"name":"projects/fertify-ai-app-467302/locations/asia-northeast2","labels":{"appengine.googleapis.com/region":"asia-northeast2","cloud.googleapis.com/location":"asia-northeast2","cloud.googleapis.com/region":"asia-northeast2"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"asia-northeast2","displayName":"Osaka"},{"name":"projects/fertify-ai-app-467302/locations/asia-northeast3","labels":{"appengine.googleapis.com/region":"asia-northeast3","cloud.googleapis.com/location":"asia-northeast3","cloud.googleapis.com/region":"asia-northeast3"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"asia-northeast3","displayName":"Seoul"},{"name":"projects/fertify-ai-app-467302/locations/asia-south1","labels":{"appengine.googleapis.com/region":"asia-south1","cloud.googleapis.com/location":"asia-south1","cloud.googleapis.com/region":"asia-south1"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"asia-south1","displayName":"Mumbai"},{"name":"projects/fertify-ai-app-467302/locations/asia-south2","labels":{"cloud.googleapis.com/location":"asia-south2","cloud.googleapis.com/region":"asia-south2"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"asia-south2","displayName":"Delhi"},{"name":"projects/fertify-ai-app-467302/locations/asia-southeast1","labels":{"appengine.googleapis.com/region":"asia-southeast1","cloud.googleapis.com/location":"asia-southeast1","cloud.googleapis.com/region":"asia-southeast1"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"asia-southeast1","displayName":"Singapore"},{"name":"projects/fertify-ai-app-467302/locations/asia-southeast2","labels":{"appengine.googleapis.com/region":"asia-southeast2","cloud.googleapis.com/location":"asia-southeast2","cloud.googleapis.com/region":"asia-southeast2"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"asia-southeast2","displayName":"Jakarta"},{"name":"projects/fertify-ai-app-467302/locations/australia-southeast1","labels":{"appengine.googleapis.com/region":"australia-southeast1","cloud.googleapis.com/location":"australia-southeast1","cloud.googleapis.com/region":"australia-southeast1"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"australia-southeast1","displayName":"Sydney"},{"name":"projects/fertify-ai-app-467302/locations/australia-southeast2","labels":{"cloud.googleapis.com/location":"australia-southeast2","cloud.googleapis.com/region":"australia-southeast2"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"australia-southeast2","displayName":"Melbourne"},{"name":"projects/fertify-ai-app-467302/locations/europe-central2","labels":{"appengine.googleapis.com/region":"europe-central2","cloud.googleapis.com/location":"europe-central2","cloud.googleapis.com/region":"europe-central2"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"europe-central2","displayName":"Warsaw"},{"name":"projects/fertify-ai-app-467302/locations/europe-north1","labels":{"cloud.googleapis.com/location":"europe-north1","cloud.googleapis.com/region":"europe-north1"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"europe-north1","displayName":"Finland"},{"name":"projects/fertify-ai-app-467302/locations/europe-north2","labels":{"cloud.googleapis.com/location":"europe-north2","cloud.googleapis.com/region":"europe-north2"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"europe-north2","displayName":"Stockholm"},{"name":"projects/fertify-ai-app-467302/locations/europe-southwest1","labels":{"cloud.googleapis.com/location":"europe-southwest1","cloud.googleapis.com/region":"europe-southwest1"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"europe-southwest1","displayName":"Madrid"},{"name":"projects/fertify-ai-app-467302/locations/europe-west1","labels":{"cloud.googleapis.com/location":"europe-west1","cloud.googleapis.com/region":"europe-west1"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"europe-west1","displayName":"Belgium"},{"name":"projects/fertify-ai-app-467302/locations/europe-west10","labels":{"cloud.googleapis.com/location":"europe-west10","cloud.googleapis.com/region":"europe-west10"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"europe-west10","displayName":"Berlin"},{"name":"projects/fertify-ai-app-467302/locations/europe-west12","labels":{"cloud.googleapis.com/location":"europe-west12","cloud.googleapis.com/region":"europe-west12"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"europe-west12","displayName":"Turin"},{"name":"projects/fertify-ai-app-467302/locations/europe-west2","labels":{"appengine.googleapis.com/region":"europe-west2","cloud.googleapis.com/location":"europe-west2","cloud.googleapis.com/region":"europe-west2"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"europe-west2","displayName":"London"},{"name":"projects/fertify-ai-app-467302/locations/europe-west3","labels":{"appengine.googleapis.com/region":"europe-west3","cloud.googleapis.com/location":"europe-west3","cloud.googleapis.com/region":"europe-west3"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"europe-west3","displayName":"Frankfurt"},{"name":"projects/fertify-ai-app-467302/locations/europe-west4","labels":{"cloud.googleapis.com/location":"europe-west4","cloud.googleapis.com/region":"europe-west4"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"europe-west4","displayName":"Netherlands"},{"name":"projects/fertify-ai-app-467302/locations/europe-west6","labels":{"appengine.googleapis.com/region":"europe-west6","cloud.googleapis.com/location":"europe-west6","cloud.googleapis.com/region":"europe-west6"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"europe-west6","displayName":"Zurich"},{"name":"projects/fertify-ai-app-467302/locations/europe-west8","labels":{"cloud.googleapis.com/location":"europe-west8","cloud.googleapis.com/region":"europe-west8"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"europe-west8","displayName":"Milan"},{"name":"projects/fertify-ai-app-467302/locations/europe-west9","labels":{"cloud.googleapis.com/location":"europe-west9","cloud.googleapis.com/region":"europe-west9"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"europe-west9","displayName":"Paris"},{"name":"projects/fertify-ai-app-467302/locations/me-central1","labels":{"cloud.googleapis.com/location":"me-central1","cloud.googleapis.com/region":"me-central1"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"me-central1","displayName":"Doha"},{"name":"projects/fertify-ai-app-467302/locations/me-central2","labels":{"cloud.googleapis.com/location":"me-central2","cloud.googleapis.com/region":"me-central2"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"me-central2","displayName":"Dammam"},{"name":"projects/fertify-ai-app-467302/locations/me-west1","labels":{"cloud.googleapis.com/location":"me-west1","cloud.googleapis.com/region":"me-west1"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"me-west1","displayName":"Tel Aviv"},{"name":"projects/fertify-ai-app-467302/locations/northamerica-northeast1","labels":{"appengine.googleapis.com/region":"northamerica-northeast1","cloud.googleapis.com/location":"northamerica-northeast1","cloud.googleapis.com/region":"northamerica-northeast1"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"northamerica-northeast1","displayName":"Montréal"},{"name":"projects/fertify-ai-app-467302/locations/northamerica-northeast2","labels":{"cloud.googleapis.com/location":"northamerica-northeast2","cloud.googleapis.com/region":"northamerica-northeast2"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"northamerica-northeast2","displayName":"Toronto"},{"name":"projects/fertify-ai-app-467302/locations/northamerica-south1","labels":{"cloud.googleapis.com/location":"northamerica-south1","cloud.googleapis.com/region":"northamerica-south1"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"northamerica-south1","displayName":"Mexico"},{"name":"projects/fertify-ai-app-467302/locations/southamerica-east1","labels":{"appengine.googleapis.com/region":"southamerica-east1","cloud.googleapis.com/location":"southamerica-east1","cloud.googleapis.com/region":"southamerica-east1"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"southamerica-east1","displayName":"São Paulo"},{"name":"projects/fertify-ai-app-467302/locations/southamerica-west1","labels":{"cloud.googleapis.com/location":"southamerica-west1","cloud.googleapis.com/region":"southamerica-west1"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"southamerica-west1","displayName":"Santiago"},{"name":"projects/fertify-ai-app-467302/locations/us-central1","labels":{"cloud.googleapis.com/location":"us-central1","cloud.googleapis.com/region":"us-central1"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"us-central1","displayName":"Iowa"},{"name":"projects/fertify-ai-app-467302/locations/us-east1","labels":{"appengine.googleapis.com/region":"us-east1","cloud.googleapis.com/location":"us-east1","cloud.googleapis.com/region":"us-east1"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"us-east1","displayName":"South Carolina"},{"name":"projects/fertify-ai-app-467302/locations/us-east4","labels":{"appengine.googleapis.com/region":"us-east4","cloud.googleapis.com/location":"us-east4","cloud.googleapis.com/region":"us-east4"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"us-east4","displayName":"Northern Virginia"},{"name":"projects/fertify-ai-app-467302/locations/us-east5","labels":{"cloud.googleapis.com/location":"us-east5","cloud.googleapis.com/region":"us-east5"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"us-east5","displayName":"Columbus"},{"name":"projects/fertify-ai-app-467302/locations/us-south1","labels":{"cloud.googleapis.com/location":"us-south1","cloud.googleapis.com/region":"us-south1"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"us-south1","displayName":"Dallas"},{"name":"projects/fertify-ai-app-467302/locations/us-west1","labels":{"appengine.googleapis.com/region":"us-west1","cloud.googleapis.com/location":"us-west1","cloud.googleapis.com/region":"us-west1"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"us-west1","displayName":"Oregon"},{"name":"projects/fertify-ai-app-467302/locations/us-west2","labels":{"appengine.googleapis.com/region":"us-west2","cloud.googleapis.com/location":"us-west2","cloud.googleapis.com/region":"us-west2"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"us-west2","displayName":"Los Angeles"},{"name":"projects/fertify-ai-app-467302/locations/us-west3","labels":{"appengine.googleapis.com/region":"us-west3","cloud.googleapis.com/location":"us-west3","cloud.googleapis.com/region":"us-west3"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"us-west3","displayName":"Salt Lake City"},{"name":"projects/fertify-ai-app-467302/locations/us-west4","labels":{"appengine.googleapis.com/region":"us-west4","cloud.googleapis.com/location":"us-west4","cloud.googleapis.com/region":"us-west4"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"us-west4","displayName":"Las Vegas"},{"name":"projects/fertify-ai-app-467302/locations/us-west8","labels":{"cloud.googleapis.com/location":"us-west8","cloud.googleapis.com/region":"us-west8"},"metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.LocationMetadata"},"locationId":"us-west8","displayName":"Phoenix"}]}
+[info] 
+[info] Firestore Security Rules allow you to define how and when to allow
+[info] requests. You can keep these rules in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2025-07-28T04:17:11.560Z] Checked if tokens are valid: true, expires at: 1753678868342
+[debug] [2025-07-28T04:17:11.560Z] Checked if tokens are valid: true, expires at: 1753678868342
+[debug] [2025-07-28T04:17:11.560Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/fertify-ai-app-467302/releases pageSize=10&pageToken=
+[debug] [2025-07-28T04:17:12.888Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/fertify-ai-app-467302/releases 200
+[debug] [2025-07-28T04:17:12.888Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/fertify-ai-app-467302/releases {}
+[info] 
+[info] Firestore indexes allow you to perform complex queries while
+[info] maintaining performance that scales with the size of the result
+[info] set. You can keep index definitions in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2025-07-28T04:17:36.880Z] Checked if tokens are valid: true, expires at: 1753678868342
+[debug] [2025-07-28T04:17:36.880Z] Checked if tokens are valid: true, expires at: 1753678868342
+[debug] [2025-07-28T04:17:36.880Z] Checked if tokens are valid: true, expires at: 1753678868342
+[debug] [2025-07-28T04:17:36.880Z] Checked if tokens are valid: true, expires at: 1753678868342
+[debug] [2025-07-28T04:17:36.880Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/fertify-ai-app-467302/databases/(default)/collectionGroups/-/indexes [none]
+[debug] [2025-07-28T04:17:36.882Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/fertify-ai-app-467302/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* [none]
+[debug] [2025-07-28T04:17:38.101Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/fertify-ai-app-467302/databases/(default)/collectionGroups/-/indexes 404
+[debug] [2025-07-28T04:17:38.101Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/fertify-ai-app-467302/databases/(default)/collectionGroups/-/indexes {"error":{"code":404,"message":"Project 'fertify-ai-app-467302' or database '(default)' does not exist.","status":"NOT_FOUND"}}
+[info] +  Wrote firestore.rules 
+[info] +  Wrote firestore.indexes.json 
+[info] 
+=== Genkit Setup
+[debug] [2025-07-28T04:17:38.138Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/fertify-ai-app-467302/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* 404
+[debug] [2025-07-28T04:17:38.138Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/fertify-ai-app-467302/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* {"error":{"code":404,"message":"Project 'fertify-ai-app-467302' or database '(default)' does not exist.","status":"NOT_FOUND"}}
+[debug] [2025-07-28T04:17:59.859Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-07-28T04:17:59.859Z] > authorizing via signed-in user (richardadjiwayofficial@gmail.com)
+[debug] [2025-07-28T04:17:59.859Z] [iam] checking project fertify-ai-app-467302 for permissions ["firebase.projects.get"]
+[debug] [2025-07-28T04:17:59.860Z] Checked if tokens are valid: true, expires at: 1753678868342
+[debug] [2025-07-28T04:17:59.860Z] Checked if tokens are valid: true, expires at: 1753678868342
+[debug] [2025-07-28T04:17:59.860Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/fertify-ai-app-467302:testIamPermissions [none]
+[debug] [2025-07-28T04:17:59.860Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/fertify-ai-app-467302:testIamPermissions x-goog-quota-user=projects/fertify-ai-app-467302
+[debug] [2025-07-28T04:17:59.860Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/fertify-ai-app-467302:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-07-28T04:18:01.473Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/fertify-ai-app-467302:testIamPermissions 200
+[debug] [2025-07-28T04:18:01.473Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/fertify-ai-app-467302:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-07-28T04:18:01.474Z] Checked if tokens are valid: true, expires at: 1753678868342
+[debug] [2025-07-28T04:18:01.474Z] Checked if tokens are valid: true, expires at: 1753678868342
+[debug] [2025-07-28T04:18:01.474Z] Checked if tokens are valid: true, expires at: 1753678868342
+[debug] [2025-07-28T04:18:01.474Z] Checked if tokens are valid: true, expires at: 1753678868342
+[debug] [2025-07-28T04:18:01.474Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/fertify-ai-app-467302/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-07-28T04:18:01.474Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/fertify-ai-app-467302/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/fertify-ai-app-467302
+[debug] [2025-07-28T04:18:01.476Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/fertify-ai-app-467302/services/runtimeconfig.googleapis.com [none]
+[debug] [2025-07-28T04:18:01.476Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/fertify-ai-app-467302/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/fertify-ai-app-467302
+[debug] [2025-07-28T04:18:02.773Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/fertify-ai-app-467302/services/cloudfunctions.googleapis.com 200
+[debug] [2025-07-28T04:18:02.773Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/fertify-ai-app-467302/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2025-07-28T04:18:02.773Z] Checked if tokens are valid: true, expires at: 1753678868342
+[debug] [2025-07-28T04:18:02.773Z] Checked if tokens are valid: true, expires at: 1753678868342
+[debug] [2025-07-28T04:18:02.773Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/fertify-ai-app-467302/services/cloudfunctions.googleapis.com:enable [none]
+[debug] [2025-07-28T04:18:02.774Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/fertify-ai-app-467302/services/cloudfunctions.googleapis.com:enable x-goog-quota-user=projects/fertify-ai-app-467302
+[debug] [2025-07-28T04:18:02.776Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/fertify-ai-app-467302/services/runtimeconfig.googleapis.com 200
+[debug] [2025-07-28T04:18:02.776Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/fertify-ai-app-467302/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2025-07-28T04:18:03.574Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/fertify-ai-app-467302/services/cloudfunctions.googleapis.com:enable 200
+[debug] [2025-07-28T04:18:03.575Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/fertify-ai-app-467302/services/cloudfunctions.googleapis.com:enable [omitted]
+[info] Let's create a new codebase for your functions.
+[info] A directory corresponding to the codebase will be created in your project
+[info] with sample code pre-configured.
+
+[info] See https://firebase.google.com/docs/functions/organize-functions for
+[info] more information on organizing your functions using codebases.
+
+[info] Functions can be deployed with firebase deploy.
+
+[info] +  Wrote functions/package.json 
+[info] +  Wrote functions/.eslintrc.js 
+[info] +  Wrote functions/tsconfig.dev.json 
+[info] +  Wrote functions/tsconfig.json 
+[info] +  Wrote functions/src/index.ts 
+[info] +  Wrote functions/.gitignore 
+[info] 
+[info] i  genkit: Installing Genkit CLI version 1.15.5
+ 
+[info] i  genkit: Installing NPM packages for genkit 
+[info] +  genkit: Successfully installed NPM packages 
+[info] i  genkit: Updating tsconfig.json 
+[info] +  genkit: Successfully updated tsconfig.json 
+[info] i  genkit: Updating package.json 
+[info] +  genkit: Successfully updated package.json 
+[info] Telemetry data can be used to monitor and gain insights into your AI features. There may be a cost associated with using this feature. See https://firebase.google.com/docs/genkit/observability/telemetry-collection.
+[info] i  genkit: Generating sample file 
+[info] +  genkit: Successfully generated sample file (src/genkit-sample.ts) 
+[info] 
+[info] 
+Login to Google Cloud using:
+[info]     gcloud auth application-default login --project fertify-ai-app-467302
+
+[info] Then start the Genkit developer experience by running:
+[info]     cd functions && npm run genkit:start
+[info] 
+=== Functions Setup
+[debug] [2025-07-28T04:31:37.134Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-07-28T04:31:37.134Z] > authorizing via signed-in user (richardadjiwayofficial@gmail.com)
+[debug] [2025-07-28T04:31:37.134Z] [iam] checking project fertify-ai-app-467302 for permissions ["firebase.projects.get"]
+[debug] [2025-07-28T04:31:37.136Z] Checked if tokens are valid: true, expires at: 1753678868342
+[debug] [2025-07-28T04:31:37.136Z] Checked if tokens are valid: true, expires at: 1753678868342
+[debug] [2025-07-28T04:31:37.137Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/fertify-ai-app-467302:testIamPermissions [none]
+[debug] [2025-07-28T04:31:37.137Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/fertify-ai-app-467302:testIamPermissions x-goog-quota-user=projects/fertify-ai-app-467302
+[debug] [2025-07-28T04:31:37.137Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/fertify-ai-app-467302:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-07-28T04:31:38.728Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/fertify-ai-app-467302:testIamPermissions 200
+[debug] [2025-07-28T04:31:38.729Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/fertify-ai-app-467302:testIamPermissions {"permissions":["firebase.projects.get"]}
+[info] 
+Detected existing codebase(s): default
+
+[debug] [2025-07-28T04:58:21.118Z] ExitPromptError: User force closed the prompt with SIGINT
+    at Interface.sigint (C:\Users\USER\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\@inquirer\core\dist\commonjs\lib\create-prompt.js:101:37)
+    at Interface.emit (node:events:519:28)
+    at Interface.emit (node:domain:488:12)
+    at [_ttyWrite] [as _ttyWrite] (node:internal/readline/interface:1126:18)
+    at ReadStream.onkeypress (node:internal/readline/interface:265:20)
+    at ReadStream.emit (node:events:531:35)
+    at ReadStream.emit (node:domain:488:12)
+    at emitKeys (node:internal/readline/utils:371:14)
+    at emitKeys.next (<anonymous>)
+    at ReadStream.onData (node:internal/readline/emitKeypressEvents:64:36)
+[error] 
+[error] Error: An unexpected error has occurred.
