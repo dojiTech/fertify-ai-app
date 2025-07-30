@@ -5,11 +5,17 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
-//import { saveFertilizerCalculation, getFertilizerHistory, FertilizerCalculation } from '@/src/api/firestore';
-//import { Timestamp } from 'firebase/firestore';
+import { FertilizerCalculation } from '@/src/api/firestore';
+import { Timestamp } from 'firebase/firestore';
 import { useAuth } from '@/src/contexts/AuthContext';
 import { router } from 'expo-router';
 import { signOut } from '@/src/api/auth';
+import * as Storage from '@/src/api/storage';
+
+// Initialize storage on app start
+Storage.initStorage().catch(error => {
+  console.error('Failed to initialize storage:', error);
+});
 
 // Type for the result object
 interface NPKResult {
@@ -62,13 +68,13 @@ export default function CalculatorScreen() {
     }
   }, [isAuthenticated]);
   
-  // Load calculation history from Firestore
+  // Load calculation history from storage
   const loadCalculationHistory = async () => {
     if (!user) return;
     
     try {
       setIsLoading(true);
-      const calculationHistory = await getFertilizerHistory(user.uid, 5);
+      const calculationHistory = await Storage.getFertilizerHistory(user.uid, 5);
       setHistory(calculationHistory);
     } catch (error) {
       console.error('Error loading calculation history:', error);
@@ -108,7 +114,7 @@ export default function CalculatorScreen() {
     setResult({ n: nContent, p: pContent, k: kContent, nRatio: nVal, pRatio: pVal, kRatio: kVal });
   };
   
-  // Save calculation to Firestore
+  // Save calculation to storage
   const saveCalculation = async () => {
     if (!result || !user) return;
     
@@ -128,7 +134,7 @@ export default function CalculatorScreen() {
         notes: notes.trim() || undefined
       };
       
-      await saveFertilizerCalculation(calculationData);
+      await Storage.saveFertilizerCalculation(calculationData);
       Alert.alert('Success', 'Calculation saved successfully');
       setNotes('');
       

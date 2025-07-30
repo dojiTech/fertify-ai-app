@@ -1,4 +1,4 @@
-/*import { collection, addDoc, getDocs, query, orderBy, limit, Timestamp, where, doc, getDoc } from 'firebase/firestore';
+import { collection, addDoc, getDocs, query, orderBy, limit, Timestamp, where, doc, getDoc } from 'firebase/firestore';
 import { db } from './firebase';
 
 // Message interface
@@ -65,7 +65,7 @@ export interface FertilizerCalculation {
   notes?: string;
 }
 
-// Save a fertilizer calculation
+// Save a fertilizer calculation to Firestore
 export async function saveFertilizerCalculation(calculation: Omit<FertilizerCalculation, 'id'>): Promise<string> {
   try {
     const docRef = await addDoc(collection(db, 'fertilizerCalculations'), calculation);
@@ -76,7 +76,7 @@ export async function saveFertilizerCalculation(calculation: Omit<FertilizerCalc
   }
 }
 
-// Get fertilizer calculation history for a user
+// Get fertilizer calculation history from Firestore
 export async function getFertilizerHistory(userId: string, limitCount = 10): Promise<FertilizerCalculation[]> {
   try {
     const calculationsRef = collection(db, 'fertilizerCalculations');
@@ -103,4 +103,3 @@ export async function getFertilizerHistory(userId: string, limitCount = 10): Pro
     return [];
   }
 }
-  */
