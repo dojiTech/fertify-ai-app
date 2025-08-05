@@ -16,9 +16,15 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.dojitech.fertifyaiapp"
     },
     "web": {
+      "build": {
+        "babel": {
+          "include": ["expo-sqlite"]
+        }
+      },
       "bundler": "metro",
       "output": "static",
       "favicon": "./assets/images/favicon.png"
@@ -33,10 +39,17 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      "expo-sqlite"
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "977cdf64-f43a-4a87-ae81-0bd62bfaa623"
+      }
     }
   }
 }

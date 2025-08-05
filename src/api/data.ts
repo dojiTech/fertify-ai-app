@@ -16,7 +16,6 @@ export interface FertilizerCalculation {
   notes?: string;
 }
 
-// Initialize the database
 export function initDatabase() {
   db.transaction(tx => {
     tx.executeSql(
@@ -37,7 +36,6 @@ export function initDatabase() {
   });
 }
 
-// Save a fertilizer calculation locally
 export function saveFertilizerCalculation(calculation: Omit<FertilizerCalculation, 'id'>): Promise<number> {
   return new Promise((resolve, reject) => {
     db.transaction(tx => {
@@ -51,7 +49,6 @@ export function saveFertilizerCalculation(calculation: Omit<FertilizerCalculatio
   });
 }
 
-// Get fertilizer calculation history from local database
 export function getFertilizerHistory(userId: string, limitCount = 10): Promise<FertilizerCalculation[]> {
   return new Promise((resolve, reject) => {
     db.transaction(tx => {
@@ -60,55 +57,6 @@ export function getFertilizerHistory(userId: string, limitCount = 10): Promise<F
         [userId, limitCount],
         (_, result) => resolve(result.rows._array),
         (_, error) => { reject(error); return false; }
-      );
-    });
-  });
-}
-
-// Mark a calculation as synced with Firestore
-export function markCalculationAsSynced(id: number): Promise<void> {
-  return new Promise((resolve, reject) => {
-    db.transaction(tx => {
-      tx.executeSql(
-        'UPDATE fertilizer_calculations SET synced = 1 WHERE id = ?;',
-        [id],
-        () => resolve(),
-        (_, error: SQLite.SQLError) => {
-          reject(error);
-          return false;
-        }
-      );
-    });
-  });
-}
-
-// Get unsynced calculations
-export function getUnsyncedCalculations(): Promise<FertilizerCalculation[]> {
-  return new Promise((resolve, reject) => {
-    db.transaction(tx => {
-      tx.executeSql(
-        'SELECT * FROM fertilizer_calculations WHERE synced = 0;',
-        [],
-        (_, { rows: { _array } }) => {
-          const calculations = _array.map(row => ({
-            id: row.id.toString(),
-            userId: row.userId,
-            amount: row.amount,
-            nRatio: row.nRatio,
-            pRatio: row.pRatio,
-            kRatio: row.kRatio,
-            nContent: row.nContent,
-            pContent: row.pContent,
-            kContent: row.kContent,
-            timestamp: new SQLite.Timestamp(row.timestamp),
-            notes: row.notes
-          }));
-          resolve(calculations);
-        },
-        (_, error) => {
-          reject(error);
-          return false;
-        }
       );
     });
   });

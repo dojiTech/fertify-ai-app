@@ -1,4 +1,4 @@
-/*import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, TextInput, TouchableOpacity, Image, Alert, ActivityIndicator } from 'react-native';
 import { router } from 'expo-router';
 import { ThemedText } from '@/components/ThemedText';
@@ -143,4 +143,3 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 });
-*/

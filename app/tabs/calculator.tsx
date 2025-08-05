@@ -55,6 +55,8 @@ export default function CalculatorScreen() {
   const [isSaving, setIsSaving] = useState(false);
   const [history, setHistory] = useState<FertilizerCalculation[]>([]);
   const [notes, setNotes] = useState('');
+  const [plotSize, setPlotSize] = useState('1');
+  const [showModal, setShowModal] = useState(false);
   const { user, isAuthenticated } = useAuth();
   
   // Check if user is authenticated
@@ -112,6 +114,7 @@ export default function CalculatorScreen() {
     const pContent = (amt * pVal) / 100;
     const kContent = (amt * kVal) / 100;
     setResult({ n: nContent, p: pContent, k: kContent, nRatio: nVal, pRatio: pVal, kRatio: kVal });
+    setShowModal(true);
   };
   
   // Save calculation to storage
@@ -175,6 +178,85 @@ export default function CalculatorScreen() {
             <TouchableOpacity style={styles.signOutButton} onPress={handleSignOut}>
               <ThemedText style={styles.signOutText}>Sign Out</ThemedText>
             </TouchableOpacity>
+          </View>
+          
+          <View
+            style={styles.modalContainer}
+            style={styles.modalContainer}
+// Remove visible prop since View component doesn't accept it
+            // Remove onRequestClose since it's not valid for View component
+          >
+            <View style={styles.modalContainer}>
+              <View style={[styles.modalContent, { backgroundColor: resultCardBg }]}>
+                <ThemedText type="subtitle" style={[styles.resultTitle, { color: resultCardText }]}>Results</ThemedText>
+                
+                {/* Nutrient Balance Chart */}
+                <View style={styles.chartContainer}>
+                  <View style={[styles.chartBar, { 
+                    width: `${result ? (result.nRatio / (result.nRatio + result.pRatio + result.kRatio)) * 100 : 0}%`,
+                    backgroundColor: '#4CAF50'
+                  }]}>
+                    <ThemedText style={styles.chartLabel}>N</ThemedText>
+                  </View>
+                  <View style={[styles.chartBar, { 
+                    width: `${result ? (result.pRatio / (result.nRatio + result.pRatio + result.kRatio)) * 100 : 0}%`,
+                    backgroundColor: '#2196F3'
+                  }]}>
+                    <ThemedText style={styles.chartLabel}>P</ThemedText>
+                  </View>
+                  <View style={[styles.chartBar, { 
+                    width: `${result ? (result.kRatio / (result.nRatio + result.pRatio + result.kRatio)) * 100 : 0}%`,
+                    backgroundColor: '#FF9800'
+                  }]}>
+                    <ThemedText style={styles.chartLabel}>K</ThemedText>
+                  </View>
+                </View>
+                
+                {/* Dosage for Plot Size */}
+                <View style={styles.plotSizeContainer}>
+                  <ThemedText style={styles.label}>Plot Size (hectares):</ThemedText>
+                  <TextInput
+                    style={[styles.input, { backgroundColor: Colors[colorScheme].background, color: Colors[colorScheme].text }]}
+                    value={plotSize}
+                    onChangeText={setPlotSize}
+                    keyboardType="numeric"
+                  />
+                  <ThemedText style={{ color: resultCardText }}>
+                    Dosage for {plotSize} ha: {result ? (parseFloat(amount) * parseFloat(plotSize)).toFixed(2) : '0'} kg
+                  </ThemedText>
+                </View>
+                
+                {/* Action Buttons */}
+                <View style={styles.modalButtons}>
+                  <TouchableOpacity 
+                    style={[styles.modalButton, { backgroundColor: Colors[colorScheme].tint }]}
+                    onPress={() => {
+                      saveCalculation();
+                      setShowModal(false);
+                    }}
+                  >
+                    <ThemedText style={styles.buttonText}>Save to History</ThemedText>
+                  </TouchableOpacity>
+                  
+                  <TouchableOpacity 
+                    style={[styles.modalButton, { backgroundColor: '#2196F3' }]}
+                    onPress={() => {
+                      // Share functionality would go here
+                      Alert.alert('Share', 'Share functionality would be implemented here');
+                    }}
+                  >
+                    <ThemedText style={styles.buttonText}>Share Results</ThemedText>
+                  </TouchableOpacity>
+                  
+                  <TouchableOpacity 
+                    style={[styles.modalButton, { backgroundColor: '#f44336' }]}
+                    onPress={() => setShowModal(false)}
+                  >
+                    <ThemedText style={styles.buttonText}>Close</ThemedText>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </View>
           </View>
           <View style={styles.form}>
             <ThemedText style={styles.label}>Amount of fertiliser (kg):</ThemedText>
@@ -300,6 +382,52 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
     justifyContent: 'center',
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+  },
+  modalContent: {
+    width: '90%',
+    padding: 20,
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+  chartContainer: {
+    flexDirection: 'row',
+    height: 40,
+    width: '100%',
+    marginVertical: 15,
+    borderRadius: 5,
+    overflow: 'hidden',
+  },
+  chartBar: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
+  },
+  chartLabel: {
+    color: 'white',
+    fontWeight: 'bold',
+  },
+  plotSizeContainer: {
+    width: '100%',
+    marginBottom: 15,
+  },
+  modalButtons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    marginTop: 10,
+  },
+  modalButton: {
+    flex: 1,
+    marginHorizontal: 5,
+    borderRadius: 5,
+    padding: 10,
+    alignItems: 'center',
   },
   scrollContent: {
     flexGrow: 1,
