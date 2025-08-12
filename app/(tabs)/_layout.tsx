@@ -20,24 +20,23 @@ export default function TabLayout() {
         tabBarBackground: TabBarBackground,
         tabBarStyle: Platform.select({
           ios: {
-            // Use a transparent background on iOS to show the blur effect
             position: 'absolute',
           },
           default: {},
         }),
       }}>
       <Tabs.Screen
-        name="index"
+        name="calculator"
         options={{
           title: 'Fertify AI Calculator',
-          tabBarIcon: ({ color }) => <IconSymbol size={50} name="function" color={color} />,
+          tabBarIcon: ({ color }) => <IconSymbol size={40} name="function" color={color} />,
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="chat"
         options={{
           title: 'Fertify AI Chat',
-          tabBarIcon: ({ color }) => <IconSymbol size={50} name="bubble.left.and.bubble.right.fill" color={color} />,
+          tabBarIcon: ({ color }) => <IconSymbol size={40} name="bubble.left.and.bubble.right.fill" color={color} />,
         }}
       />
     </Tabs>

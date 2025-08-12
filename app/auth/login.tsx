@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+//import { Image } from 'react-native';
+
 import {
   View,
   Text,
+  Image,
   TextInput,
   TouchableOpacity,
   StyleSheet,
@@ -49,6 +52,10 @@ export default function LoginScreen() {
     >
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.content}>
+          <Image
+            source={require('../../assets/images/fai.png')}
+            style={styles.logo}
+          />
           <Text style={[styles.title, { color: Colors[colorScheme ?? 'light'].text }]}>
             Welcome Back
           </Text>
@@ -192,5 +199,11 @@ const styles = StyleSheet.create({
   registerText: {
     fontSize: 14,
     textDecorationLine: 'underline',
+  },
+  logo: {
+    width: 120,
+    height: 120,
+    marginBottom: 20,
+    alignSelf: 'center',
   },
 });

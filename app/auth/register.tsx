@@ -14,6 +14,7 @@ import { router } from 'expo-router';
 import { registerUser } from '../../src/api/auth';
 import { Colors } from '../../constants/Colors';
 import { useColorScheme } from '../../hooks/useColorScheme';
+import { Image } from 'react-native';
 
 export default function RegisterScreen() {
   const [name, setName] = useState('');
@@ -66,11 +67,15 @@ export default function RegisterScreen() {
     >
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.content}>
+          <Image
+            source={require('../../assets/images/fai.png')}
+            style={styles.logo}
+          />
           <Text style={[styles.title, { color: Colors[colorScheme ?? 'light'].text }]}>
             Create Account
           </Text>
           <Text style={[styles.subtitle, { color: Colors[colorScheme ?? 'light'].text }]}>
-            Join Fertify AI to track your fertility journey
+            Join Fertify AI to track your fertilizer usage journey
           </Text>
 
           <View style={styles.form}>
@@ -253,5 +258,11 @@ const styles = StyleSheet.create({
   loginText: {
     fontSize: 14,
     textDecorationLine: 'underline',
+  },
+  logo: {
+    width: 120,
+    height: 120,
+    marginBottom: 20,
+    alignSelf: 'center',
   },
 });

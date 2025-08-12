@@ -1,6 +1,6 @@
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
-import { Stack, useRouter, useSegments } from 'expo-router';
+import { Slot, Stack, useRouter, useSegments } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
 import { useEffect } from 'react';
@@ -23,17 +23,11 @@ function RootLayoutNav() {
       router.replace('/auth/login');
     } else if (isAuthenticated && inAuthGroup) {
       // Redirect to the home page if authenticated and in auth group
-      router.replace('/');
+      router.replace('/(tabs)');
     }
   }, [isAuthenticated, segments]);
   
-  return (
-    <Stack>
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen name="auth" options={{ headerShown: false }} />
-      <Stack.Screen name="+not-found" />
-    </Stack>
-  );
+  return <Slot />;
 }
 
 export default function RootLayout() {

@@ -5,23 +5,9 @@ import {
   onAuthStateChanged,
   User,
   updateProfile,
-  sendPasswordResetEmail,
-  initializeAuth,
-  getReactNativePersistence,
-  getAuth,
-  getApps
+  sendPasswordResetEmail
 } from 'firebase/auth';
-import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
-import { app } from './firebase';
-
-let auth;
-if (!getApps().length) {
-  auth = initializeAuth(app, {
-    persistence: getReactNativePersistence(ReactNativeAsyncStorage)
-  });
-} else {
-  auth = getAuth(app);
-}
+import { auth } from './firebase';
 
 // Register a new user
 export async function registerUser(email: string, password: string, displayName: string): Promise<User> {

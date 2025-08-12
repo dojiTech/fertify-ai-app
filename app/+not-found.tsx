@@ -7,9 +7,10 @@ import { ThemedView } from '@/components/ThemedView';
 export default function NotFoundScreen() {
   return (
     <>
-      <Stack.Screen options={{ title: 'Oops!' }} />
+      <Stack.Screen options={{ title: 'Quick Notice!' }} />
       <ThemedView style={styles.container}>
-        <ThemedText type="title">This screen does not exist or may be under development.</ThemedText>
+        
+        <ThemedText type="title">Just a quick notice, this app is in its beta state under development. DojiTech is working for your best interest.</ThemedText>
         <Link href="/" style={styles.link}>
           <ThemedText type="link">Go to home screen!</ThemedText>
         </Link>
