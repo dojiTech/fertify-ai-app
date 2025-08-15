@@ -61,42 +61,140 @@ export default function InputScreen() {
     <ThemedView style={styles.container}>
       <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <ScrollView contentContainerStyle={styles.scrollContent}>
-          <ThemedText type="title">Fertilizer Input</ThemedText>
+          <ThemedText type="title" style={styles.pageTitle}>Fertilizer Calculator</ThemedText>
+          <ThemedText type="subtitle" style={styles.subtitle}>Enter your fertilizer details below</ThemedText>
           {error ? <ThemedText style={styles.error}>{error}</ThemedText> : null}
-          <TextInput style={styles.input} placeholder="Fertilizer Amount (kg)" value={amount} onChangeText={setAmount} keyboardType="numeric" />
-          <TextInput style={styles.input} placeholder="N Ratio (%)" value={n} onChangeText={setN} keyboardType="numeric" />
-          <TextInput style={styles.input} placeholder="P Ratio (%)" value={p} onChangeText={setP} keyboardType="numeric" />
-          <TextInput style={styles.input} placeholder="K Ratio (%)" value={k} onChangeText={setK} keyboardType="numeric" />
-          <TextInput style={styles.input} placeholder="Soil N (kg/ha)" value={soilN} onChangeText={setSoilN} keyboardType="numeric" />
-          <TextInput style={styles.input} placeholder="Soil P (kg/ha)" value={soilP} onChangeText={setSoilP} keyboardType="numeric" />
-          <TextInput style={styles.input} placeholder="Soil K (kg/ha)" value={soilK} onChangeText={setSoilK} keyboardType="numeric" />
-          <Picker selectedValue={selectedCrop} onValueChange={setSelectedCrop} style={styles.picker}>
-            <Picker.Item label="Select Crop" value="" />
-            <Picker.Item label="Maize" value="Maize" />
-            <Picker.Item label="Wheat" value="Wheat" />
-            <Picker.Item label="Vegetables" value="Vegetables" />
-            <Picker.Item label="Cassava" value="Cassava" />
-
-          </Picker>
-          <TextInput style={styles.input} placeholder="Land Area (ha)" value={landArea} onChangeText={setLandArea} keyboardType="numeric" />
-          <TextInput style={styles.input} placeholder="Target Yield (tons/ha)" value={targetYield} onChangeText={setTargetYield} keyboardType="numeric" />
-          <Picker selectedValue={growthStage} onValueChange={setGrowthStage} style={styles.picker}>
-            <Picker.Item label="Select Growth Stage" value="" />
-            <Picker.Item label="Vegetative" value="Vegetative" />
-            <Picker.Item label="Flowering" value="Flowering" />
-            <Picker.Item label="Fruiting" value="Fruiting" />
-          </Picker>
-          <Picker selectedValue={soilType} onValueChange={setSoilType} style={styles.picker}>
-            <Picker.Item label="Select Soil Type" value="" />
-            <Picker.Item label="Sandy" value="Sandy" />
-            <Picker.Item label="Clay" value="Clay" />
-            <Picker.Item label="Loam" value="Loam" />
-          </Picker>
+          
+          <View style={styles.formSection}>
+            <ThemedText type="defaultSemiBold" style={styles.sectionTitle}>Fertilizer Information</ThemedText>
+            <TextInput 
+              style={styles.input} 
+              placeholder="Fertilizer Amount (kg)" 
+              placeholderTextColor={Colors[colorScheme].tabIconDefault}
+              value={amount} 
+              onChangeText={setAmount} 
+              keyboardType="numeric" 
+            />
+            <TextInput 
+              style={styles.input} 
+              placeholder="N Ratio (%)" 
+              placeholderTextColor={Colors[colorScheme].tabIconDefault}
+              value={n} 
+              onChangeText={setN} 
+              keyboardType="numeric" 
+            />
+            <TextInput 
+              style={styles.input} 
+              placeholder="P Ratio (%)" 
+              placeholderTextColor={Colors[colorScheme].tabIconDefault}
+              value={p} 
+              onChangeText={setP} 
+              keyboardType="numeric" 
+            />
+            <TextInput 
+              style={styles.input} 
+              placeholder="K Ratio (%)" 
+              placeholderTextColor={Colors[colorScheme].tabIconDefault}
+              value={k} 
+              onChangeText={setK} 
+              keyboardType="numeric" 
+            />
+          </View>
+      
+          <View style={styles.formSection}>
+            <ThemedText type="defaultSemiBold" style={styles.sectionTitle}>Soil Analysis</ThemedText>
+            <TextInput 
+              style={styles.input} 
+              placeholder="Soil N (kg/ha)" 
+              placeholderTextColor={Colors[colorScheme].tabIconDefault}
+              value={soilN} 
+              onChangeText={setSoilN} 
+              keyboardType="numeric" 
+            />
+            <TextInput 
+              style={styles.input} 
+              placeholder="Soil P (kg/ha)" 
+              placeholderTextColor={Colors[colorScheme].tabIconDefault}
+              value={soilP} 
+              onChangeText={setSoilP} 
+              keyboardType="numeric" 
+            />
+            <TextInput 
+              style={styles.input} 
+              placeholder="Soil K (kg/ha)" 
+              placeholderTextColor={Colors[colorScheme].tabIconDefault}
+              value={soilK} 
+              onChangeText={setSoilK} 
+              keyboardType="numeric" 
+            />
+          </View>
+      
+          <View style={styles.formSection}>
+            <ThemedText type="defaultSemiBold" style={styles.sectionTitle}>Crop Details</ThemedText>
+            <View style={styles.pickerContainer}>
+              <Picker
+                selectedValue={selectedCrop}
+                onValueChange={setSelectedCrop}
+                style={[styles.picker, { color: Colors[colorScheme].text }]}
+              >
+                <Picker.Item label="Select Crop" value="" color={Colors[colorScheme].tabIconDefault} />
+                <Picker.Item label="Maize" value="Maize" color={Colors[colorScheme].text} />
+                <Picker.Item label="Wheat" value="Wheat" color={Colors[colorScheme].text} />
+                <Picker.Item label="Vegetables" value="Vegetables" color={Colors[colorScheme].text} />
+                <Picker.Item label="Cassava" value="Cassava" color={Colors[colorScheme].text} />
+              </Picker>
+            </View>
+      
+            <TextInput 
+              style={styles.input} 
+              placeholder="Land Area (ha)" 
+              placeholderTextColor={Colors[colorScheme].tabIconDefault}
+              value={landArea} 
+              onChangeText={setLandArea} 
+              keyboardType="numeric" 
+            />
+            <TextInput 
+              style={styles.input} 
+              placeholder="Target Yield (tons/ha)" 
+              placeholderTextColor={Colors[colorScheme].tabIconDefault}
+              value={targetYield} 
+              onChangeText={setTargetYield} 
+              keyboardType="numeric" 
+            />
+      
+            <View style={styles.pickerContainer}>
+              <Picker
+                selectedValue={growthStage}
+                onValueChange={setGrowthStage}
+                style={[styles.picker, { color: Colors[colorScheme].text }]}
+              >
+                <Picker.Item label="Select Growth Stage" value="" color={Colors[colorScheme].tabIconDefault} />
+                <Picker.Item label="Vegetative" value="Vegetative" color={Colors[colorScheme].text} />
+                <Picker.Item label="Flowering" value="Flowering" color={Colors[colorScheme].text} />
+                <Picker.Item label="Fruiting" value="Fruiting" color={Colors[colorScheme].text} />
+              </Picker>
+            </View>
+      
+            <View style={styles.pickerContainer}>
+              <Picker
+                selectedValue={soilType}
+                onValueChange={setSoilType}
+                style={[styles.picker, { color: Colors[colorScheme].text }]}
+              >
+                <Picker.Item label="Select Soil Type" value="" color={Colors[colorScheme].tabIconDefault} />
+                <Picker.Item label="Sandy" value="Sandy" color={Colors[colorScheme].text} />
+                <Picker.Item label="Clay" value="Clay" color={Colors[colorScheme].text} />
+                <Picker.Item label="Loam" value="Loam" color={Colors[colorScheme].text} />
+              </Picker>
+            </View>
+          </View>
+      
           <TouchableOpacity style={styles.button} onPress={handleCalculate}>
-            <ThemedText>Calculate</ThemedText>
+            <ThemedText style={styles.buttonText}>Calculate</ThemedText>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => router.push('/calculator/education')}>
-            <ThemedText>Learn about Calculations</ThemedText>
+      
+          <TouchableOpacity style={styles.educationLink} onPress={() => router.push('/calculator/education')}>
+            <ThemedText style={styles.educationText}>Learn about Calculations</ThemedText>
           </TouchableOpacity>
         </ScrollView>
       </KeyboardAvoidingView>
@@ -105,10 +203,50 @@ export default function InputScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 16 },
-  scrollContent: { flexGrow: 1 },
-  input: { borderWidth: 1, borderColor: '#ccc', padding: 8, marginVertical: 8, borderRadius: 4 },
-  picker: { borderWidth: 1, borderColor: '#ccc', marginVertical: 8, borderRadius: 4 },
-  button: { backgroundColor: '#4CAF50', padding: 12, borderRadius: 4, alignItems: 'center', marginVertical: 16 },
-  error: { color: 'red', marginBottom: 8 }
+  container: { 
+    flex: 1, 
+    padding: 20,
+    backgroundColor: Colors[colorScheme].background 
+  },
+  scrollContent: { 
+    flexGrow: 1,
+    paddingBottom: 20 
+  },
+  input: { 
+    height: 50,
+    borderWidth: 1, 
+    borderColor: Colors[colorScheme].tabIconDefault,
+    backgroundColor: Colors[colorScheme].background,
+    color: Colors[colorScheme].text,
+    padding: 12,
+    marginVertical: 10,
+    borderRadius: 8,
+    fontSize: 16
+  },
+  picker: { 
+    height: 50,
+    borderWidth: 1,
+    borderColor: Colors[colorScheme].tabIconDefault,
+    backgroundColor: Colors[colorScheme].background,
+    color: Colors[colorScheme].text,
+    marginVertical: 10,
+    borderRadius: 8
+  },
+  button: { 
+    backgroundColor: Colors[colorScheme].tint,
+    padding: 16,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginVertical: 20,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84
+  },
+  error: { 
+    color: '#ff3b30',
+    marginBottom: 12,
+    fontSize: 14
+  }
 });

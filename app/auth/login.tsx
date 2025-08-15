@@ -55,7 +55,7 @@ export default function LoginScreen() {
           <Image
             source={require('../../assets/images/fai.png')}
             style={styles.logo}
-          />
+          />    
           <Text style={[styles.title, { color: Colors[colorScheme ?? 'light'].text }]}>
             Welcome Back
           </Text>
