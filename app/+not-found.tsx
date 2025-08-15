@@ -54,22 +54,16 @@ export default function NotFoundScreen() {
               </View>
               
               {/* Warning Text */}
-              <ThemedText style={styles.warningText}>DEVELOPING APP</ThemedText>
-              
+              <ThemedText style={[styles.warningText, { textAlign: 'center' }]}>App Under Development - We're Making It Better!</ThemedText>
               {/* Buttons */}
               <View style={styles.buttonContainer}>
                 <TouchableOpacity 
                   style={[styles.button, styles.yesButton]}
-                  onPress={() => {
-                    handleResponse(true);
-                  }}
                 >
-                  <Link href="/(tabs)/calculator/index">
+                  <Link href="/calculator/index">
                     <ThemedText style={styles.buttonText}>GO TO CALCULATOR</ThemedText>
                   </Link>
                 </TouchableOpacity>
-                
-                
               </View>
             </View>
           </View>

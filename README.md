@@ -1,50 +1,93 @@
-# Welcome to your Expo app 👋
+# Fertify AI
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Fertify AI is an intelligent fertilizer recommendation system that helps farmers optimize their crop nutrition management through data-driven insights.
 
-## Get started
+## Features
 
-1. Install dependencies
+- **Smart Calculator**: Input your soil analysis data and crop requirements to receive personalized fertilizer recommendations
+- **Chat Assistant**: Get expert guidance on agricultural practices and fertilizer management
+- **History Tracking**: Keep track of your previous calculations and recommendations
+- **Dark/Light Theme**: Comfortable viewing experience in any lighting condition
 
-   ```bash
-   npm install
-   ```
+## Getting Started
 
-2. Start the app
+### Prerequisites
 
-   ```bash
-   npx expo start
-   ```
+- Node.js (v18 or higher)
+- npm or yarn package manager
+- Expo CLI
 
-In the output, you'll find options to open the app in a
+### Installation
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
+1. Clone the repository:
 ```bash
-npm run reset-project
+git clone [your-repository-url]
+cd fertify-ai-app
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+2. Install dependencies:
+```bash
+npm install
+```
 
-## Learn more
+3. Start the development server:
+```bash
+npx expo start
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+## Project Structure
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```
+fertify-ai-app/
+├── app/                   # Main application screens
+│   ├── (tabs)/           # Tab-based navigation screens
+│   ├── auth/             # Authentication screens
+│   └── _layout.tsx       # Root layout configuration
+├── components/           # Reusable UI components
+├── constants/            # Theme and configuration constants
+├── hooks/               # Custom React hooks
+└── src/                 # Source code for business logic
+    └── api/             # API integration and services
+```
 
-## Join the community
+## Features in Detail
 
-Join our community of developers creating universal apps.
+### Calculator Module
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+The calculator module helps farmers determine the optimal fertilizer requirements based on:
+- Soil analysis results
+- Crop type and growth stage
+- Target yield goals
+- Local environmental conditions
+
+### Chat Assistant
+
+An AI-powered chat interface that provides:
+- Real-time answers to farming queries
+- Fertilizer application guidance
+- Best practices for crop management
+- Troubleshooting support
+
+## Development Resources
+
+- [Expo documentation](https://docs.expo.dev/): Learn fundamentals and advanced topics
+- [React Native](https://reactnative.dev/): Core framework documentation
+- [Firebase](https://firebase.google.com/docs): Backend services documentation
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Support
+
+For support, please email [support@fertify.ai](mailto:support@fertify.ai) or open an issue in the repository.
+
+## Acknowledgments
+
+- Thanks to all contributors who have helped shape Fertify AI
+- Special thanks to the agricultural experts who provided domain knowledge
+- Built with Expo and React Native
