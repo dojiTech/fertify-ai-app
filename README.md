@@ -1,4 +1,4 @@
-# Fertify AI
+# Fertify AI by DojiTech (Richie Doe-Adjiway)
 
 Fertify AI is an intelligent fertilizer recommendation system that helps farmers optimize their crop nutrition management through data-driven insights.
 
@@ -21,7 +21,7 @@ Fertify AI is an intelligent fertilizer recommendation system that helps farmers
 
 1. Clone the repository:
 ```bash
-git clone [your-repository-url]
+git clone https://github.com/dojiTech/fertify-ai-app.git
 cd fertify-ai-app
 ```
 
@@ -91,3 +91,5 @@ For support, please email [support@fertify.ai](mailto:support@fertify.ai) or ope
 - Thanks to all contributors who have helped shape Fertify AI
 - Special thanks to the agricultural experts who provided domain knowledge
 - Built with Expo and React Native
+- and most importantly, I want to thank the almighty God, Jesus Christ, my brother and savior for always giving me diretions inspiration
+- 
